@@ -1,0 +1,78 @@
+---
+description: libqc project definition
+alwaysApply: true
+---
+
+# libqc Project
+
+## Purpose
+
+The libqc project is the core library for interacting with the P11 ERC-4337 smart wallet.
+
+It is to be used to LibQC clients e.g. the Chrome Extension, iOS client etc.
+
+Atlas is another product from P11 that provides ENS like functionality. They are smart contracts that provide functionality to register domain names and attach records.
+
+## Core Libraries
+
+- `viem` - Primary library for interacting with smart wallets
+- `@zerodev/sdk` - Library for interacting with the ZeroDev implementation of the ERC-4337 wallet.
+- `@noble/hashes` - Prefer this library for dealing with pre-quantum cryptography
+- `@noble/post-quantum` - Prefer this library for dealing with post-quantum cryptography
+- `@scure/bip32` - Always use this library for dealing with BIP32 derivation of private and public keys from indexes and mnemonics
+- `@scure/bip39`- Always use this library for dealing with mnemonics
+
+This project uses `pnpm` for Typescript dependency management (DO NOT USE `npm`, `yarn` or any other package manager).
+
+## Glossary
+
+- Wallet: A LibQC wallet is a collection of accounts
+- Chain: A specific blockchain e.g. BASE, Ethereum, Solana
+- Address: An address on chain. Can exist across multiple chains.
+- Account: An address + chain pair in CAIP-10 format
+- Mnemonic: A 24 word seed phrase
+- Wallet Backup: The ability to recover a wallet e.g. via mnemonic import, PDF
+- Validator: The contract that validates user operations in ERC-4337 e.g. ECC or ML-DSA validators
+- Entrypoint: The ERC-4337 entrypoint that user operations are sent to
+- User Operation: An ERC-4337 action that a user performs using their account e.g. Send a transaction, change a validator
+- Bundler: An ERC-4337 bundler that bundles User Operations to send to the entrypoint
+- Paymaster: An ERC-4337 paymaster that can sponsor gas for User Operations
+- Factory: An ERC-4337 CREATE2 smart account generator
+- Transaction: A settlement on-chain of either a native or ERC-20 contract call
+- Atlas Domain Name: An ENS like domain name e.g. richard.q, conor.q, david.q
+- Atlas Domain Name Registration: The action of registering a Domain Name
+- Atlas Domain Name Resolution: The action of resolving a domain name (+ optional path) to a record
+- Atlas Domain Name Record: Arbitrary data that can be resolved e.g. an account, address, color, email address
+
+## Directory Structure
+
+- `__tests__` - all Typescript tests
+- `.github` - Github configuration e.g. workflows, PR templates etc
+- `.husky` - Husky git hooks
+- `src` - Contains all Typescript code and the core of the Typescript @project-eleven/libqc library
+- `src/zeroDev` - Holds all logic for ZeroDev specific code. References to ZeroDev should NOT exist outside of this folder.
+
+## General Design
+
+- `src/vault.ts` - The exposed LibQC client library. Exposes an API that will be called by LibQC clients.
+- `src/account.ts` - The account client. Created by `LibQC.getAccount`. Exposes functionality specific to accounts e.g. sending a transaction
+
+## Commands
+
+These are the commands that should be run when contributing to the project.
+
+- `pnpm build` - Builds the library
+- `pnpm test` - Runs tests
+- `pnpm lint:check` - Checks ESLint linting
+- `pnpm lint:fix` - Fixes ESLint issues where possible
+- `pnpm prettier:check` - Checks for Prettier issues
+- `pnpm prettier:fix` - Fixes Prettier issues
+
+## General Guidelines
+
+- All code must be tested accurately with well-designed unit tests
+- ALWAYS run `pnpm prettier:fix` to fix prettier issues before finishing work
+- ALWAYS run `pnpm lint:fix` to automatically fix ESLint linting issues before finishing work. Manually fix any remaining issues.
+- ALWAYS run `pnpm test` to run the full test suit before finishing work. Scoping down tests (e.g. `pnpm test -- __tests__/unit/account.test.ts`) is acceptable when writing tests, but the full test suite MUST be run before yielding back to the user.
+- All tests MUST pass for the work to be considered finished
+- Always make sure that additional dependencies are well documented

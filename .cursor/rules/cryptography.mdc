@@ -1,0 +1,16 @@
+---
+description: Cryptography and vault security rules
+globs: ["src/cryptography.ts", "src/state.ts", "src/libqc.ts"]
+alwaysApply: false
+---
+
+# Cryptography + Vault
+
+- AES-GCM with random IV per encryption, scrypt-derived key from password + salt
+- Vault lifecycle: hasPassword -> setPassword/unlock -> operations -> lock
+- Operations requiring decrypted state must fail fast when locked
+- NEVER log: mnemonic, password, private keys, derived key bytes
+- Any edit to src/cryptography.ts -> flag for security review in PR
+- Keep memory zeroing where currently implemented
+- Password policy enforcement must remain explicit and deterministic
+- Mnemonic validation: strict 24-word policy

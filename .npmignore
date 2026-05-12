@@ -1,0 +1,33 @@
+## Aiming for a minimal package, only include necessary files:
+# dist/
+#pkg/
+#package.json
+#README.md
+#LICENSE
+
+# Exclude all source files and development artifacts
+src/
+tests/
+scripts/
+examples/
+.github/
+.vscode/
+.idea/
+
+# Build configs
+tsconfig.json
+Cargo.toml
+Cargo.lock
+eslint.config.*
+.prettierrc*
+.npmignore
+.gitignore
+
+# Logs and misc
+*.log
+.DS_Store
+.env
+.env.*
+
+# CI and workflow files
+.github/

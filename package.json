@@ -1,0 +1,81 @@
+{
+  "name": "@project-eleven/libqc",
+  "version": "0.0.24",
+  "description": "Project Eleven's core library for interacting with quantum-safe wallets",
+  "license": "MIT",
+  "author": "Project Eleven",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "packageManager": "pnpm@10.20.0",
+  "files": [
+    "dist/**",
+    "pkg/**"
+  ],
+  "sideEffects": false,
+  "homepage": "https://github.com/p-11/libqc#readme",
+  "bugs": {
+    "url": "https://github.com/p-11/libqc/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/p-11/libqc.git"
+  },
+  "scripts": {
+    "prepare": "husky",
+    "preinstall": "npx only-allow pnpm",
+    "build": "tsc -b",
+    "build:prod": "rm -rf dist && tsc -b",
+    "validate:prod": "node scripts/validate-prod.mjs",
+    "test:unit": "vitest run __tests__/unit",
+    "test:property": "vitest run __tests__/property",
+    "test": "vitest run --exclude '__tests__/property/**'",
+    "test:all": "vitest run",
+    "test:coverage": "vitest run --coverage --exclude '__tests__/property/**'",
+    "clean": "rimraf dist",
+    "dev": "tsc -w",
+    "pretest": "pnpm run build",
+    "typecheck": "tsc --noEmit && tsc --noEmit -p __tests__/tsconfig.json",
+    "lint:ts": "eslint --config eslint.config.mjs \"src/**/*.ts\" \"__tests__/**/*.ts\"",
+    "lint:check": "pnpm run typecheck && pnpm run lint:ts",
+    "lint:fix": "pnpm run lint:ts --fix",
+    "prettier:ts": "prettier --config .prettierrc \"**/*.{js,json,ts,mjs}\"",
+    "prettier:check": "pnpm run prettier:ts --check",
+    "prettier:fix": "pnpm run prettier:ts --write",
+    "check": "pnpm run lint:check && pnpm run prettier:check && pnpm test"
+  },
+  "devDependencies": {
+    "@eslint/js": "9.39.1",
+    "@types/node": "24.10.0",
+    "@typescript-eslint/eslint-plugin": "8.46.3",
+    "@typescript-eslint/parser": "8.46.3",
+    "@vitest/coverage-v8": "4.0.9",
+    "dotenv": "17.2.3",
+    "eslint": "9.39.1",
+    "eslint-config-prettier": "10.1.8",
+    "eslint-plugin-prettier": "5.5.4",
+    "fast-check": "4.6.0",
+    "globals": "16.5.0",
+    "husky": "9.1.7",
+    "prettier": "3.6.2",
+    "ts-node": "10.9.2",
+    "tslib": "2.8.1",
+    "typescript": "5.9.3",
+    "typescript-eslint": "8.46.3",
+    "vitest": "4.0.9"
+  },
+  "dependencies": {
+    "@noble/hashes": "2.0.1",
+    "@noble/post-quantum": "0.6.1",
+    "@noble/secp256k1": "3.0.0",
+    "@scure/base": "2.0.0",
+    "@scure/bip32": "2.0.1",
+    "@scure/bip39": "2.0.1",
+    "@zerodev/ecdsa-validator": "5.4.9",
+    "@zerodev/sdk": "5.5.5",
+    "bitcoinjs-lib": "7.0.1",
+    "caip": "1.1.1",
+    "cbor-x": "1.6.4",
+    "viem": "2.38.1"
+  }
+}

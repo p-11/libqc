@@ -1,0 +1,10 @@
+---
+description: libqc-specific TypeScript additions (see P11 org rules for shared standards)
+globs: ["src/**/*.ts", "__tests__/**/*.ts"]
+alwaysApply: true
+---
+
+# TypeScript - libqc Additions
+
+- Exception: `as BrandType` allowed at validated boundaries (crypto derivation, CAIP constructors)
+- Use `satisfies Record<...>` for compile-time exhaustiveness on chain-keyed Records

@@ -1,0 +1,75 @@
+name: Pull Requests
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  pr-ci:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@41ff72655975bd51cab0327fa583b6e92b6d3061
+        with:
+          version: 10.20.0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@2028fbc5c25fe9cf00d9f06a71cc4710d4507903
+        with:
+          node-version: '24'
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile --ignore-scripts
+
+      - name: Build library (Prod)
+        run: pnpm run build:prod
+
+      - name: Verify build output
+        run: pnpm run validate:prod
+
+      - name: Run ESLint
+        run: pnpm run lint:check
+
+      - name: Check Prettier formatting
+        run: pnpm run prettier:check
+
+      - name: DepDoc
+        run: pnpm dlx @project-eleven/dep-doc@0.0.4 --run
+
+      - name: Tests
+        run: pnpm test
+        env:
+          # eth
+          TEST_ETH_L1_RPC_URL: ${{ secrets.TEST_ETH_L1_RPC_URL }}
+          TEST_ETH_BUNDLER_RPC_URL: ${{ secrets.TEST_ETH_BUNDLER_RPC_URL }}
+          TEST_ETH_BUNDLER_API_KEY: ${{ secrets.TEST_ETH_BUNDLER_API_KEY }}
+          # base
+          TEST_BASE_RPC_URL: ${{ secrets.TEST_BASE_RPC_URL }}
+          TEST_BASE_BUNDLER_RPC_URL: ${{ secrets.TEST_BASE_BUNDLER_RPC_URL }}
+          TEST_BASE_BUNDLER_API_KEY: ${{ secrets.TEST_BASE_BUNDLER_API_KEY }}
+
+      - name: Property tests
+        run: pnpm test:property
+
+      # P11TODO: Note, this only runs coverage for the JS/TS tests and will rerun the JS/TS tests again to get this.
+      # Given our integration tests are taking longer to run, disabling coverage for now.
+      # We should refactor our scripts to avoid running the JS/TS tests twice.
+      # - name: TS/JS Test coverage report
+      #   run: pnpm test:coverage
+      #   env:
+      #     add env as above
+
+      - name: Trivy
+        uses: aquasecurity/trivy-action@97e0b3872f55f89b95b2f65b3dbab56962816478
+        with:
+          scan-type: 'fs'
+          ignore-unfixed: false
+          format: 'table' # P11TODO: Would be best for us to output in SARIF format and post to Github
+          severity: 'HIGH,CRITICAL'
+          exit-code: 1

@@ -1,0 +1,7 @@
+#!/bin/bash
+set -e
+
+pnpm run lint:check
+pnpm run prettier:check
+pnpm dlx @project-eleven/dep-doc --run
+pnpm run test:unit

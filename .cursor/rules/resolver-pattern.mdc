@@ -1,0 +1,23 @@
+---
+description: Chain dispatch resolver pattern for libqc
+globs: ["src/account/**/*.ts", "src/chain.ts", "src/zeroDev/**/*.ts"]
+alwaysApply: false
+---
+
+# Resolver Pattern
+
+Chain-dispatched operations follow this layout:
+
+feature/
+  resolver.ts     # Type definition
+  index.ts        # Router (Record<ChainKind, Resolver>)
+  resolvers/
+    evm.ts        # EVM implementation
+    bitcoin.ts    # Bitcoin implementation
+
+Router uses Record<ChainKind, Resolver> with satisfies for exhaustiveness.
+Each resolver file handles exactly one chain family.
+Adding a new chain: add resolver file + add entry to Record (compiler enforces completeness).
+
+Current state uses type guards (isEvmChain, isBitcoinChain) which works for 2 chains.
+Target: migrate to resolver pattern as chains are added.

@@ -1,0 +1,25 @@
+---
+description: Anti-patterns to avoid in libqc
+globs: ["**/*.ts"]
+alwaysApply: true
+---
+
+# Anti-Patterns
+
+Canonical source for Claude/Codex parity: `.claude/rules/anti-patterns.md`.
+
+## Core
+
+1. switch/case - use match() or Record<Key, Value> lookup
+2. try/catch for flow control - use attempt() with [data, err] tuple
+3. `as` type assertions - use type narrowing, guards, or discriminated unions
+4. `?.` / `??` on non-optional types - trust types, use ensurePresent()
+5. Hardcoded magic values - use named constants or convertDuration()
+6. useMemo/useCallback - React Compiler handles memoization
+
+## libqc-Specific
+
+7. Magic timeout values - use convertDuration()
+8. new Error('something') without context - include expected vs found
+9. Concurrent duplicate fetches - use withInFlightCoalescer
+10. Silent early returns in user-action handlers - always show feedback

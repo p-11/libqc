@@ -1,0 +1,149 @@
+[[dependency]]
+name = "viem"
+purpose = "A TypeScript library for interacting with Ethereum and EVM-compatible blockchains"
+scope = "prod"
+
+[[dependency]]
+name = "@noble/hashes"
+purpose = "Cryptographic hash functions (HMAC, SHA-512) used for BIP-85 key derivation"
+scope = "prod"
+
+[[dependency]]
+name = "@noble/post-quantum"
+purpose = "ML-DSA-65 signatures for optional signed JSON-RPC HTTP transports (proxy authentication)"
+scope = "prod"
+
+[[dependency]]
+name = "@scure/base"
+purpose = "Base64 encoding/decoding for encrypted vault serialization (ciphertext, IV, salt)"
+scope = "prod"
+
+[[dependency]]
+name = "@scure/bip32"
+purpose = "BIP-32 HD key derivation for hierarchical deterministic wallets"
+scope = "prod"
+
+[[dependency]]
+name = "@scure/bip39"
+purpose = "BIP-39 mnemonic phrase generation and seed derivation"
+scope = "prod"
+
+[[dependency]]
+name = "@zerodev/ecdsa-validator"
+purpose = "ECDSA validator plugin for ZeroDev account validation"
+scope = "prod"
+
+[[dependency]]
+name = "@zerodev/sdk"
+purpose = "ZeroDev SDK for creating and managing ERC-4337 accounts"
+scope = "prod"
+
+[[dependency]]
+name = "tslib"
+purpose = "TypeScript helper library required by ZeroDev packages when running tests"
+scope = "dev"
+
+[[dependency]]
+name = "@typescript-eslint/eslint-plugin"
+purpose = "Provides ESLint rules for TypeScript to enforce code quality and consistency"
+scope = "dev"
+
+[[dependency]]
+name = "@typescript-eslint/parser"
+purpose = "Parses TypeScript code so ESLint can understand and lint it"
+scope = "dev"
+
+[[dependency]]
+name = "eslint"
+purpose = "Main linter for JavaScript and TypeScript code"
+scope = "dev"
+
+[[dependency]]
+name = "eslint-config-prettier"
+purpose = "Disables ESLint rules that conflict with Prettier formatting"
+scope = "dev"
+
+[[dependency]]
+name = "eslint-plugin-prettier"
+purpose = "Runs Prettier as an ESLint rule to enforce formatting automatically"
+scope = "dev"
+
+[[dependency]]
+name = "prettier"
+purpose = "Formats code consistently across the codebase"
+scope = "dev"
+
+[[dependency]]
+name = "ts-node"
+purpose = "Allows running TypeScript files directly in Node.js without precompiling"
+scope = "dev"
+
+[[dependency]]
+name = "typescript"
+purpose = "Provides TypeScript compiler and type definitions"
+scope = "dev"
+
+[[dependency]]
+name = "typescript-eslint"
+purpose = "Integrates TypeScript-specific linting support for ESLint"
+scope = "dev"
+
+[[dependency]]
+name = "vitest"
+purpose = "Testing framework for Vite projects with fast dev integration"
+scope = "dev"
+
+[[dependency]]
+name = "@vitest/coverage-v8"
+purpose = "V8 coverage provider for Vitest to measure code coverage"
+scope = "dev"
+
+[[dependency]]
+name = "husky"
+purpose = "Manages hooks for Git"
+scope = "dev"
+
+[[dependency]]
+name = "fast-check"
+purpose = "Property-based/fuzz testing framework for generating random inputs and asserting cryptographic invariants"
+scope = "dev"
+
+[[dependency]]
+name = "globals"
+purpose = "Global identifiers from different JS environments"
+scope = "dev"
+
+[[dependency]]
+name = "@eslint/js"
+purpose = "ESLint Javascript plugin"
+scope = "dev"
+
+[[dependency]]
+name = "@types/node"
+purpose = "TypeScript types for NodeJS"
+scope = "dev"
+
+[[dependency]]
+name = "dotenv"
+purpose = "Loads environment variables from .env files for testing"
+scope = "dev"
+
+[[dependency]]
+name = "caip"
+purpose = "Provides primitives for the CAIP standards"
+scope = "prod"
+
+[[dependency]]
+name = "bitcoinjs-lib"
+purpose = "Bitcoin library for P2WPKH address generation and transaction utilities"
+scope = "prod"
+
+[[dependency]]
+name = "@noble/secp256k1"
+purpose = "secp256k1 ECC for Bitcoin public key derivation from private key (used with bitcoinjs-lib)"
+scope = "prod"
+
+[[dependency]]
+name = "cbor-x"
+purpose = "High-performance binary serialization using CBOR for efficient vault state storage and memory-safe processing"
+scope = "prod"

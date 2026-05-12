@@ -1,0 +1,191 @@
+[
+  {
+    "id": "p11:eth",
+    "symbol": "ETH",
+    "name": "Ethereum",
+    "decimals": 18,
+    "iconUrl": "https://assets.coingecko.com/coins/images/279/large/ethereum.png",
+    "entities": [
+      {
+        "assetType": "eip155:1/slip44:60",
+        "decimals": 18,
+        "name": "Ethereum",
+        "symbol": "ETH"
+      },
+      {
+        "assetType": "eip155:8453/slip44:60",
+        "decimals": 18,
+        "name": "Ethereum",
+        "symbol": "ETH"
+      }
+    ]
+  },
+  {
+    "id": "p11:usdc",
+    "symbol": "USDC",
+    "name": "USDC",
+    "decimals": 6,
+    "iconUrl": "https://assets.coingecko.com/coins/images/6319/large/usdc.png",
+    "entities": [
+      {
+        "assetType": "eip155:1/erc20:0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+        "decimals": 6,
+        "name": "USDC",
+        "symbol": "USDC"
+      },
+      {
+        "assetType": "eip155:8453/erc20:0x833589fcd6edb6e08f4c7c32d4f71b54bda02913",
+        "decimals": 6,
+        "name": "USDC",
+        "symbol": "USDC"
+      }
+    ]
+  },
+  {
+    "id": "p11:usdt",
+    "symbol": "USDT",
+    "name": "USDT",
+    "decimals": 6,
+    "iconUrl": "https://assets.coingecko.com/coins/images/325/large/Tether.png",
+    "entities": [
+      {
+        "assetType": "eip155:1/erc20:0xdAC17F958D2ee523a2206206994597C13D831ec7",
+        "decimals": 6,
+        "name": "USDT",
+        "symbol": "USDT"
+      },
+      {
+        "assetType": "eip155:8453/erc20:0xfde4C96c8593536E31F229EA8f37b2ADa2699bb2",
+        "decimals": 6,
+        "name": "USDT",
+        "symbol": "USDT"
+      }
+    ]
+  },
+  {
+    "id": "p11:weth",
+    "symbol": "wETH",
+    "name": "wETH",
+    "decimals": 18,
+    "iconUrl": "https://assets.coingecko.com/coins/images/2518/large/weth.png",
+    "entities": [
+      {
+        "assetType": "eip155:1/erc20:0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+        "decimals": 18,
+        "name": "wETH",
+        "symbol": "wETH"
+      },
+      {
+        "assetType": "eip155:8453/erc20:0x4200000000000000000000000000000000000006",
+        "decimals": 18,
+        "name": "wETH",
+        "symbol": "wETH"
+      }
+    ]
+  },
+  {
+    "id": "p11:dai",
+    "symbol": "DAI",
+    "name": "DAI",
+    "decimals": 18,
+    "iconUrl": "https://assets.coingecko.com/coins/images/9956/large/Badge_Dai.png",
+    "entities": [
+      {
+        "assetType": "eip155:1/erc20:0x6B175474E89094C44Da98b954EedeAC495271d0F",
+        "decimals": 18,
+        "name": "DAI",
+        "symbol": "DAI"
+      },
+      {
+        "assetType": "eip155:8453/erc20:0x50c5725949A6F0c72E6C4a641F24049A917DB0Cb",
+        "decimals": 18,
+        "name": "DAI",
+        "symbol": "DAI"
+      }
+    ]
+  },
+  {
+    "id": "p11:wbtc",
+    "symbol": "wBTC",
+    "name": "Wrapped BTC",
+    "decimals": 8,
+    "iconUrl": "https://assets.coingecko.com/coins/images/7598/large/WBTCLOGO.png",
+    "entities": [
+      {
+        "assetType": "eip155:1/erc20:0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+        "decimals": 8,
+        "name": "Wrapped BTC",
+        "symbol": "wBTC"
+      },
+      {
+        "assetType": "eip155:8453/erc20:0x0555E30da8f98308EdB960aa94C0Db47230d2B9c",
+        "decimals": 8,
+        "name": "Wrapped BTC",
+        "symbol": "wBTC"
+      }
+    ]
+  },
+  {
+    "id": "p11:link",
+    "symbol": "LINK",
+    "name": "ChainLink",
+    "decimals": 18,
+    "iconUrl": "https://assets.coingecko.com/coins/images/877/large/Chainlink_Logo_500.png",
+    "entities": [
+      {
+        "assetType": "eip155:1/erc20:0x514910771AF9Ca656af840dff83E8264EcF986CA",
+        "decimals": 18,
+        "name": "ChainLink",
+        "symbol": "LINK"
+      },
+      {
+        "assetType": "eip155:8453/erc20:0x88Fb150BDc53A65fe94Dea0c9BA0a6dAf8C6e196",
+        "decimals": 18,
+        "name": "ChainLink",
+        "symbol": "LINK"
+      }
+    ]
+  },
+  {
+    "id": "p11:1inch",
+    "symbol": "1INCH",
+    "name": "1INCH",
+    "decimals": 18,
+    "iconUrl": "https://assets.coingecko.com/coins/images/32906/large/1INCH.png?1699804523",
+    "entities": [
+      {
+        "assetType": "eip155:1/erc20:0x111111111117dC0aa78b770fA6A738034120C302",
+        "decimals": 18,
+        "name": "1INCH",
+        "symbol": "1INCH"
+      },
+      {
+        "assetType": "eip155:8453/erc20:0xc5fecC3a29Fb57B5024eEc8a2239d4621e111CBE",
+        "decimals": 18,
+        "name": "1INCH",
+        "symbol": "1INCH"
+      }
+    ]
+  },
+  {
+    "id": "p11:btc",
+    "symbol": "BTC",
+    "name": "Bitcoin",
+    "decimals": 8,
+    "iconUrl": "https://assets.coingecko.com/coins/images/1/large/bitcoin.png",
+    "entities": [
+      {
+        "assetType": "bip122:000000000019d6689c085ae165831e93/slip44:0",
+        "decimals": 8,
+        "name": "Bitcoin",
+        "symbol": "BTC"
+      },
+      {
+        "assetType": "bip122:000000000933ea01ad0ee984209779ba/slip44:0",
+        "decimals": 8,
+        "name": "Bitcoin",
+        "symbol": "BTC"
+      }
+    ]
+  }
+]

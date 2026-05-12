@@ -1,0 +1,10 @@
+---
+description: libqc-specific code quality (see P11 org rules for shared standards)
+globs: ["src/**/*.ts", "__tests__/**/*.ts"]
+alwaysApply: true
+---
+
+# Code Quality - libqc Additions
+
+- Run `pnpm check` after every code change
+- Descriptive error messages: say what was expected and what was found

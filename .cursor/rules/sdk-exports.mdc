@@ -1,0 +1,14 @@
+---
+description: SDK public API boundary rules
+globs: ["src/index.ts"]
+alwaysApply: false
+---
+
+# SDK Export Surface
+
+- src/index.ts is the public API entrypoint
+- Keep runtime exports deliberate, type-only exports explicit
+- LibQC default export retained for backward compatibility
+- Before removing/renaming any export: this barrel is the contract consumed by quantum-vault. Removal or rename = breaking change requiring coordination
+- Re-exports from caip and viem are part of consumer ergonomics
+- Do not leak deep internal module paths as public contract

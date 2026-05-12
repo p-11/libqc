@@ -1,0 +1,10 @@
+---
+description: libqc depdendencies policies
+alwaysApply: true
+---
+
+# libqc Dependencies
+
+- Dependencies should be added sparingly
+- Dependencies should only be added if they're audited carefully and have no critical and high CVEs
+- Dependencies should be properly documented in `dep-doc.toml`

@@ -1,0 +1,9 @@
+---
+description: Security best practices and principles
+alwaysApply: true
+---
+
+# Security Principles
+
+- Sensitive information e.g. mnemonics, private keys should be encrypted at rest and be in-memory for as little time as possible
+- Sensitive information should be zeroed out from memory the moment it is no longer needed

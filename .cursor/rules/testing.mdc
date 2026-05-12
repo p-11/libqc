@@ -1,0 +1,15 @@
+---
+description: Testing conventions for libqc
+globs: ["__tests__/**/*.ts"]
+alwaysApply: false
+---
+
+# Testing
+
+- Structure: __tests__/unit, __tests__/integration, __tests__/property
+- Shared factories in __tests__/testUtils.ts
+- Source-oriented names: {module}.test.ts
+- Property tests for crypto encode/decode round-trips
+- Mandatory coverage when touching: vault encryption, chain dispatch, validator config, transfers
+- Storage mocking: in-memory LibQCStorage maps
+- P11TODO markers = test opportunity beacons

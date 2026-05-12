@@ -1,0 +1,5 @@
+#!/bin/bash
+set -e
+
+pnpm run lint:check
+pnpm run prettier:check

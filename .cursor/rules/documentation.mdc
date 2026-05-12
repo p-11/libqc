@@ -1,0 +1,12 @@
+---
+description: Project documentation guidelines
+alwaysApply: true
+---
+
+## READMEs
+
+- Always update the README if necessary e.g. if project setup, commands change etc
+
+## Typescript
+
+- Always document Typescript functions with comprehensive JSDocs

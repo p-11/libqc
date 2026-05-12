@@ -1,0 +1,10 @@
+---
+description: libqc-specific error handling additions (see P11 org rules for shared patterns)
+globs: ["src/**/*.ts"]
+alwaysApply: true
+---
+
+# Error Handling - libqc Additions
+
+- Custom Error classes defined in src/errors.ts
+- try/catch permitted only for: finally cleanup, callback isolation, retry loops
