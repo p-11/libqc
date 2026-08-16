@@ -467,6 +467,31 @@ export interface ScryptParams {
 /**
  * Metadata describing how the encryption key was derived
  */
+
+const MIN_SCRYPT_N = 2 ** 10;
+const MAX_SCRYPT_N = 2 ** 17;
+const MAX_SCRYPT_R = 8;
+const MAX_SCRYPT_P = 2;
+
+// SECURITY FIX: Bound public KDF parameters to prevent resource exhaustion.
+// Validates persisted or caller-provided scrypt parameters before allocating any KDF work.
+export function validateScryptParams(params: ScryptParams): ScryptParams {
+  const { N, r, p } = params as unknown as { N: number; r: number; p: number };
+  const validN = Number.isSafeInteger(N) && N >= MIN_SCRYPT_N && N <= MAX_SCRYPT_N && (N & (N - 1)) === 0;
+  const validR = Number.isSafeInteger(r) && r >= 1 && r <= MAX_SCRYPT_R;
+  const validP = Number.isSafeInteger(p) && p >= 1 && p <= MAX_SCRYPT_P;
+
+  if (!validN || !validR || !validP) {
+    throw new RangeError('Invalid scrypt parameters: values exceed the supported resource limits');
+  }
+
+  return {
+    N: N as ScryptCostParameter,
+    r: r as ScryptBlockSize,
+    p: p as ScryptParallelism
+  };
+}
+
 export interface KeyDerivationOptions {
   algorithm: typeof KDF_ALGORITHM;
   params: ScryptParams;
@@ -614,10 +639,11 @@ export async function deriveEncryptionKey(
   scryptSalt: ScryptSalt,
   params: ScryptParams = DEFAULT_SCRYPT_PARAMS
 ): Promise<VaultEncryptionKeyWithMetadata> {
+  const validatedParams = validateScryptParams(params);
   let keyMaterial: Uint8Array | undefined = scrypt(password, scryptSalt, {
-    N: params.N,
-    r: params.r,
-    p: params.p,
+    N: validatedParams.N,
+    r: validatedParams.r,
+    p: validatedParams.p,
     dkLen: AES_256_GCM_KEY_BYTE_LENGTH
   });
 
@@ -632,7 +658,7 @@ export async function deriveEncryptionKey(
 
     return {
       aes256GcmKey,
-      derivationOptions: { algorithm: KDF_ALGORITHM, params },
+      derivationOptions: { algorithm: KDF_ALGORITHM, params: validatedParams },
       scryptSalt
     };
   } catch (error) {
